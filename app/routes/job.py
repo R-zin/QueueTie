@@ -1,9 +1,9 @@
 from fastapi import APIRouter,HTTPException
 from uuid import uuid4
 from ..models.models import create_Job_In,create_job_Response
-
+from ..service.database import Database
 router = APIRouter()
-
+database = Database()
 @router.get("/jobs")
 async def list_jobs():
     try:
