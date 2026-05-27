@@ -1,9 +1,11 @@
+
 from fastapi import APIRouter,HTTPException
 from uuid import uuid4
 from ..models.models import create_Job_In,create_job_Response
 
-router = APIRouter()
 
+router = APIRouter()
+QUEUE_NAME = "jobs"
 @router.get("/jobs")
 async def list_jobs():
     try:
@@ -15,7 +17,6 @@ async def list_jobs():
 @router.post("/jobs",response_model=create_job_Response)
 async def create_job(data:create_Job_In):
     try:
-
         res = create_job_Response(id=str(uuid4()),msg="Job Successfully created")
         return res
     except Exception as e:

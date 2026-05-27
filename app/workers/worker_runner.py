@@ -8,7 +8,7 @@ class WorkerRunner:
         worker = REGISTRY.get(job_type)
         if not worker:
             raise Exception("No worker found")
-        res = await  worker.process(job)
+        res = await worker.process(job)
         return res
 
 
