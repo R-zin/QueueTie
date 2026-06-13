@@ -2,3 +2,4 @@ redis
 fastapi
 pydantic
 aiosmtplib
+uvicorn
