@@ -1,9 +1,8 @@
 import json
 from .Redis_client import client
 
-QUEUE = "jobs"
 
-async def consume_job():
+async def consume_job(QUEUE):
     job = await client.brpop(QUEUE)
     if not job:
         return None

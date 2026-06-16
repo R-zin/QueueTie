@@ -1,8 +1,8 @@
 import json
 from .Redis_client import client
 
-QUEUE = "jobs"
 
-async def enqueue(data:dict):
+
+async def enqueue(data:dict,QUEUE):
     await client.lpush(QUEUE,json.dumps(data))
     

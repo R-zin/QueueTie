@@ -12,6 +12,7 @@ async def worker_loop():
         except Exception as e:
             print("Worker error")
             asyncio.sleep(1)
+
 if __name__ == "__main__":
     asyncio.run(worker_loop())
 
