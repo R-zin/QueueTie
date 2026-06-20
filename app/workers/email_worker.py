@@ -1,9 +1,9 @@
 import os
 import aiosmtplib
 from email.message import EmailMessage
-from .base import BaseWorker
 
-class EmailWorker(BaseWorker):
+
+class EmailWorker():
     async def send_email(self,to:str,subject:str,body:str):
         message = EmailMessage()
         message["From"] = os.getenv("SMTP_FROM")
