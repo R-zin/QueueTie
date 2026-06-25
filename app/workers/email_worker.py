@@ -3,7 +3,7 @@ import aiosmtplib
 from email.message import EmailMessage
 
 
-class EmailWorker():
+class EmailWorker:
     async def send_email(self,to:str,subject:str,body:str):
         message = EmailMessage()
         message["From"] = os.getenv("SMTP_FROM")
