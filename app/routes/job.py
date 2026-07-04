@@ -1,8 +1,17 @@
 
 from fastapi import APIRouter,HTTPException
 from uuid import uuid4
+
+from models.dbmodel import JobStatus
 from ..models.models import create_Job_In,create_job_Response,Create_Job_Input
 from app.Broker.producer import enqueue
+from workers.database import SessionLocal
+from models.dbmodels import Job,JobStatus
+from datetime import datetime
+
+
+db = SessionLocal()
+
 
 router = APIRouter()
 
@@ -21,6 +30,7 @@ async def create_job(data:Create_Job_Input):
             "type":data.type,
             "Payload":data.Payload
         }
+        p_db = Job(id=str(uuid4()),timestart=datetime.now(),time_end=None,job_status=JobStatus.RUNNING)
         await enqueue(data.queue,packet)
         res = create_job_Response(id=str(uuid4()),msg="Job Successfully created")
         return res

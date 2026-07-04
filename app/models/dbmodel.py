@@ -12,7 +12,6 @@ class Job(Base):
     __tablename__ = "jobs"
     id = Column(String, primary_key=True)
     time_start = Column(DateTime)
-    status = Column(String)
     time_end = Column(DateTime,nullable=True)
     job_status = Column(Enum(JobStatus, name="job_status"))
 
