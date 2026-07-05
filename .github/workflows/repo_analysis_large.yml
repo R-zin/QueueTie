@@ -27,6 +27,17 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Verify Secret Exists
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          if [ -z "$NVIDIA_API_KEY" ]; then
+            echo "❌ NVIDIA_API_KEY is EMPTY or NOT SET"
+            exit 1
+          else
+            echo "✅ NVIDIA_API_KEY is set (length: ${#NVIDIA_API_KEY})"
+          fi
+
       - name: Install Dependencies
         run: pip install openai
 
