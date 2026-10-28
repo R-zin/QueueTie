@@ -1,5 +1,13 @@
-redis
 fastapi
+uvicorn
+redis
 pydantic
 aiosmtplib
-uvicorn
+celery
+requests
+sqlalchemy
+python-dotenv
+pytest
+httpx
+pytest-cov
+ruff
